@@ -7,10 +7,10 @@ import PlayerCard from "../../ui/playerCard.jsx"
 class HomeCards extends Component {
   state = {
     cards: [
-      { bottom: 90, left: 300, img: "sdf" },
-      { bottom: 60, left: 200, img: Otamendi },
-      { bottom: 30, left: 100, img: Otamendi },
-      { bottom: 0, left: 0, img: Otamendi }
+      { bottom: 90, left: 300 },
+      { bottom: 60, left: 200 },
+      { bottom: 30, left: 100 },
+      { bottom: 0, left: 0 }
     ]
   }
 
@@ -29,7 +29,7 @@ class HomeCards extends Component {
           timing: { duration: 500, ease: easePolyOut }
         }}
       >
-        {({ left, bottom, img }) => {
+        {({ left, bottom }) => {
           return (
             <div
               style={{
