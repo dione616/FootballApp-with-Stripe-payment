@@ -51,6 +51,7 @@ export default class Enroll extends Component {
     for (let key in this.state.formdata) {
       dataToSubmit[key] = this.state.formdata[key].value
       //check if form is valid
+
       formIsValid = this.state.formdata[key].valid && formIsValid
     }
 
