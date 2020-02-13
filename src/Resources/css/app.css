@@ -565,6 +565,11 @@ footer .footer_discl {
   margin: 20px 0px;
 }
 
+.admin_container .matches_tag_blue {
+  font-weight: 700;
+  color: #3f8ab5;
+}
+
 .admin_container .matches_tag_red {
   font-weight: 700;
   color: #f44336;
