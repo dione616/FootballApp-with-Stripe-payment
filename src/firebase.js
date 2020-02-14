@@ -22,6 +22,13 @@ const firebaseDB = firebase.database()
 //requests
 const firebaseMatches = firebaseDB.ref("matches")
 const firebasePromotions = firebaseDB.ref("promotions")
+const firebaseTeams = firebaseDB.ref("teams")
 
 //export
-export { firebase, firebaseMatches, firebasePromotions }
+export {
+  firebase,
+  firebaseDB,
+  firebaseMatches,
+  firebasePromotions,
+  firebaseTeams
+}
