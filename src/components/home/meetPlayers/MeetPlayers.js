@@ -12,7 +12,7 @@ class MeetPlayers extends Component {
   render() {
     return (
       <Reveal
-        fraction={0.7}
+        fraction={0.9}
         onReveal={() => {
           this.setState({ show: true })
         }}
