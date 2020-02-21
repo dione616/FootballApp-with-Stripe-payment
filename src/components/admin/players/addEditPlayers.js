@@ -2,7 +2,12 @@ import React, { Component } from "react"
 import AdminLayout from "../../../Hoc/AdminLayout"
 import FormField from "../../ui/formFields"
 import { validate, firebaseLooper } from "../../ui/misc"
-import { firebaseDB, firebasePlayers, firebaseTeams } from "../../../firebase"
+import {
+  firebase,
+  firebaseDB,
+  firebasePlayers,
+  firebaseTeams
+} from "../../../firebase"
 import FileUploader from "../../ui/fileuploader"
 
 class AddEditPlayers extends Component {
@@ -88,6 +93,16 @@ class AddEditPlayers extends Component {
     }
   }
 
+  updateFields(player, playerId, formType, defaultImg) {
+    const newFormdata = { ...this.state.formdata }
+
+    for (let key in newFormdata) {
+      newFormdata[key].value = player[key]
+      newFormdata[key].valid = true
+    }
+    this.setState({ playerId, defaultImg, formType, formdata: newFormdata })
+  }
+
   componentDidMount() {
     const playerId = this.props.match.params.id
 
@@ -96,7 +111,23 @@ class AddEditPlayers extends Component {
         formType: "Add Player"
       })
     } else {
-      //
+      firebaseDB
+        .ref(`players/${playerId}`)
+        .once("value")
+        .then(snapshot => {
+          const playerData = snapshot.val()
+
+          firebase
+            .storage()
+            .ref("players")
+            .child(playerData.image)
+            .getDownloadURL()
+            .then(url => {
+              this.updateFields(playerData, playerId, "Edit player", url)
+            })
+          console.log(playerData)
+        })
+      this.setState({ formType: "Edit Player" })
     }
   }
 
@@ -135,6 +166,17 @@ class AddEditPlayers extends Component {
 
     if (formIsValid) {
       if (this.state.formType === "Edit player") {
+        firebaseDB
+          .ref(`players/${this.state.playerId}`)
+          .update(dataToSubmit)
+          .then(() => {
+            this.successForm("Update correctly")
+          })
+          .catch(e => {
+            this.setState({
+              formError: true
+            })
+          })
       } else {
         firebasePlayers
           .push(dataToSubmit)
@@ -160,6 +202,13 @@ class AddEditPlayers extends Component {
 
   storeFilename(filename) {
     this.updateForm({ id: "image" }, filename)
+  }
+
+  successForm(message) {
+    this.setState({ formSuccess: message })
+    setTimeout(() => {
+      this.setState({ formSuccess: "" })
+    }, 2000)
   }
 
   render() {
