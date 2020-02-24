@@ -125,7 +125,14 @@ class AddEditPlayers extends Component {
             .then(url => {
               this.updateFields(playerData, playerId, "Edit player", url)
             })
-          console.log(playerData)
+            .catch(e => {
+              this.updateFields(
+                { ...playerData, image: "" },
+                playerId,
+                "Edit player",
+                ""
+              )
+            })
         })
       this.setState({ formType: "Edit Player" })
     }
