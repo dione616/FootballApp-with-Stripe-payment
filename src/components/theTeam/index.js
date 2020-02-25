@@ -35,6 +35,26 @@ class TheTeam extends Component {
       })
     })
   }
+
+  showPlayersByCategory(category) {
+    return this.state.players
+      ? this.state.players.map((player, i) => {
+          return player.position === category ? (
+            <Fade left delay={i * 50} key={i}>
+              <div className="item">
+                <PlayerCard
+                  number={player.number}
+                  name={player.name}
+                  lastname={player.lastname}
+                  bck={player.url}
+                />
+              </div>
+            </Fade>
+          ) : null
+        })
+      : null
+  }
+
   render() {
     return (
       <div
@@ -42,7 +62,30 @@ class TheTeam extends Component {
         style={{
           background: `url(${Stripes}) repeat `
         }}
-      ></div>
+      >
+        {!this.state.loading ? (
+          <div>
+            <div className="team_category_wrapper">
+              <div className="title">Keepers</div>
+              <div className="team_cards">
+                {this.showPlayersByCategory("Keeper")}
+              </div>
+              <div className="title">Defence</div>
+              <div className="team_cards">
+                {this.showPlayersByCategory("Defence")}
+              </div>
+              <div className="title">Midfield</div>
+              <div className="team_cards">
+                {this.showPlayersByCategory("Midfield")}
+              </div>
+              <div className="title">Strikers</div>
+              <div className="team_cards">
+                {this.showPlayersByCategory("Striker")}
+              </div>
+            </div>
+          </div>
+        ) : null}
+      </div>
     )
   }
 }
