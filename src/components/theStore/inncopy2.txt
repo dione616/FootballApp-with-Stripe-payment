@@ -1,0 +1,91 @@
+import React, { useState, useEffect, useRef } from "react"
+import CircularProgress from "@material-ui/core/CircularProgress"
+import Stripes from "../../Resources/images/stripes.png"
+import { firebaseStore } from "../../firebase"
+import { firebaseLooper } from "../ui/misc"
+import StripeCheckout from "react-stripe-checkout"
+import axios from "axios"
+import { toast } from "react-toastify"
+
+toast.configure()
+
+/* rewrite to functional component to POST */
+
+const TheStore = () => {
+  /* state = {
+    isLoading: true,
+    items: [{ id: "cap001", name: "M.City Cap", price: 555 }]
+  } */
+
+  const [product] = React.useState({
+    id: "00lsd8",
+    description: "Car",
+    price: 958
+  })
+  const [it, setIt] = useState()
+
+  /* function databaseLoad() {
+    console.log("hekk")
+    firebaseStore.once("value").then(snapshot => {
+      const store = firebaseLooper(snapshot)
+      console.log(store)
+      setIt(store)
+    })
+  }
+
+  databaseLoad() */
+
+  /* function componentDidMount() {
+    firebaseStore.once("value").then(snapshot => {
+      const store = firebaseLooper(snapshot)
+      this.setState({ isLoading: false, items: store })
+    })
+    console.log(this.state.items[0])
+  } */
+
+  async function handleToken(token) {
+    const response = await axios.post(
+      "https://08crc.sse.codesandbox.io/checkout",
+      { token, product }
+    )
+    const { status } = response.data
+    console.log("Response:", response.data)
+    if (status === "success") {
+      toast("Success! Check email for details", { type: "success" })
+    } else {
+      toast("Something went wrong", { type: "error" })
+    }
+  }
+  console.log(it)
+
+  return (
+    <div
+      className="the_team_container"
+      style={{ background: `url(${Stripes}) repeat` }}
+    >
+      <div className="store_container">The Store</div>
+
+      <div className="store_wrapper">
+        <h2>
+          Price:
+          {product ? product.price : "No value"}
+        </h2>
+        <h2>
+          Name:
+          {product ? product.description : "No name"}
+        </h2>
+
+        <StripeCheckout
+          stripeKey="pk_test_UclFoF5f0JeleayORl9NIVwE00GfM2oo7L"
+          token={handleToken}
+          billingAddress
+          shippingAddress
+          amount={product.price * 100}
+          name="sdf"
+        />
+      </div>
+    </div>
+  )
+}
+
+export default TheStore

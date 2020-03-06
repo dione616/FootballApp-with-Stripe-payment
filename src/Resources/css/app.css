@@ -681,3 +681,20 @@ footer .footer_discl {
   text-align: center;
   margin-top: 200px;
 }
+
+.store_container {
+  font-size: 60px;
+  font-family: "Righteous", cursive;
+  color: #98c5e9;
+  text-align: center;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+.item_wrapper {
+  margin: 0 10vw;
+}

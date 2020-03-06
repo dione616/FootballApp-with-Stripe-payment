@@ -12,6 +12,8 @@ import AdminPlayers from "./components/admin/players"
 import AddEditPlayers from "./components/admin/players/addEditPlayers"
 import TheTeam from "./components/theTeam"
 import TheMatches from "./components/theMatches"
+import TheStore from "./components/theStore/index"
+import TheStoreItem from "./components/theStore/TheStoreItem"
 
 const Routes = props => {
   return (
@@ -89,6 +91,20 @@ const Routes = props => {
           path="/the_matches"
           exact
           component={TheMatches}
+        />
+        <PublicRoutes
+          {...props}
+          restricted={false}
+          path="/store"
+          exact
+          component={TheStore}
+        />
+        <PublicRoutes
+          {...props}
+          restricted={false}
+          path="/store/:id"
+          exact
+          component={TheStoreItem}
         />
       </Switch>
     </Layout>

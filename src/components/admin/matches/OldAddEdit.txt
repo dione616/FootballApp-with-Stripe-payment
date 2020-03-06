@@ -203,38 +203,35 @@ class AddEditMatch extends Component {
     const matchId = this.props.match.params.id
 
     const getTeams = match => {
-      console.log(match)
+      /* firebaseTeams.once("value").then(snapshot => { */
+      /* const teams = firebaseLooper(snapshot)
+        const teamOptions = [] */
 
-      firebaseTeams.once("value").then(snapshot => {
-        const teams = firebaseLooper(snapshot)
-        const teamOptions = []
-
-        snapshot.forEach(childSnapshot => {
+      /* snapshot.forEach(childSnapshot => {
           teamOptions.push({
             key: childSnapshot.val().shortName,
             value: childSnapshot.val().shortName
           })
-        })
-        this.updateFields(match /* , teamOptions, teams, type , matchId*/)
-      })
+        }) */
+      this.updateFields(match /* , teamOptions, teams, type , matchId*/)
+      /* }) */
     }
 
-    if (!matchId) {
+    /* if (!matchId) {
       //ADD NEW MATCH
       getTeams(false, "Add Match")
-    } else {
-      //EDIT EXISTING MATCH
-      firebaseDB
-        .ref(`matches/${matchId}`)
-        .once("value")
-        .then(snapshot => {
-          const match = snapshot.val()
-
-          getTeams(match, "Edit Match")
-        })
-    }
+    } else { */
+    //EDIT EXISTING MATCH
+    firebaseDB
+      .ref(`matches/${matchId}`)
+      .once("value")
+      .then(snapshot => {
+        const match = snapshot.val()
+        getTeams(match /* "Edit Match" */)
+      })
+    /* } */
   }
-
+  /* 
   successForm(message) {
     this.setState({
       formSuccess: message
@@ -294,14 +291,14 @@ class AddEditMatch extends Component {
     } else {
       this.setState({ formError: true })
     }
-  }
+  } */
 
   render() {
     console.log(this.state)
 
     return (
       <AdminLayout>
-        <div className="editmatch_dialog_wrapper">
+        {/* <div className="editmatch_dialog_wrapper">
           <h2>{this.state.formType}</h2>
           <div className="">
             <form onSubmit={event => this.submitForm(event)}>
@@ -391,7 +388,7 @@ class AddEditMatch extends Component {
               </div>
             </form>
           </div>
-        </div>
+              </div> */}
       </AdminLayout>
     )
   }

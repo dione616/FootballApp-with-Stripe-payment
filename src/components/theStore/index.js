@@ -1,34 +1,38 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
-import AdminLayout from "../../../Hoc/AdminLayout"
+import AdminLayout from "../../Hoc/AdminLayout"
 import Table from "@material-ui/core/Table"
 import TableBody from "@material-ui/core/TableBody"
 import TableCell from "@material-ui/core/TableCell"
 import TableHead from "@material-ui/core/TableHead"
 import TableRow from "@material-ui/core/TableRow"
 import Paper from "@material-ui/core/Paper"
-import { firebaseMatches } from "../../../firebase"
-import { firebaseLooper, reverseArray } from "../../ui/misc"
 import CircularProgress from "@material-ui/core/CircularProgress"
+import Stripes from "../../Resources/images/stripes.png"
+import { firebaseStore } from "../../firebase"
+import { firebaseLooper, reverseArray } from "../ui/misc"
+import StripeCheckout from "react-stripe-checkout"
+import axios from "axios"
+import { toast } from "react-toastify"
+import Payment from "./Payment"
+import { Link } from "react-router-dom"
 
-class AdminMatches extends Component {
+toast.configure()
+
+/* rewrite to functional component to POST */
+
+class TheStore extends Component {
   state = {
-    isloading: true,
-    matches: []
+    isLoading: true,
+    items: []
   }
 
   componentDidMount() {
-    console.log(this.state.matches)
-
-    firebaseMatches.once("value").then(snapshot => {
-      const matches = firebaseLooper(snapshot)
-
-      this.setState({
-        isloading: false,
-        matches: reverseArray(matches)
-      })
+    console.log(this.state.items)
+    firebaseStore.once("value").then(snapshot => {
+      const store = firebaseLooper(snapshot)
+      this.setState({ isLoading: false, items: store })
     })
-    console.log(this.state.matches)
+    console.log(this.state.items)
   }
 
   render() {
@@ -46,35 +50,21 @@ class AdminMatches extends Component {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {console.log(this.state.matches)}
-                {this.state.matches
-                  ? this.state.matches.map((match, i) => (
+                {console.log(this.state.items)}
+                {this.state.items
+                  ? this.state.items.map((item, i) => (
                       <TableRow key={i}>
-                        <TableCell>{match.date}</TableCell>
+                        <TableCell>{item.id}</TableCell>
                         <TableCell>
-                          <Link to={`/admin_matches/edit_match/${match.id}`}>
+                          <Link to={`/store/${item.id}`}>
                             <span className="matches_tag_blue">
-                              {match.away}
+                              {item.name}
                             </span>
                             <strong> VS </strong>
                             <span className="matches_tag_blue">
-                              {match.local}
+                              {item.price}
                             </span>
                           </Link>
-                        </TableCell>
-                        <TableCell>
-                          {match.resultAway}
-                          <strong> - </strong>
-                          {match.resultLocal}
-                        </TableCell>
-                        <TableCell>
-                          {match.final === "Yes" ? (
-                            <span className="matches_tag_red">Final</span>
-                          ) : (
-                            <span className="matches_tag_green">
-                              Not played yet
-                            </span>
-                          )}
                         </TableCell>
                       </TableRow>
                     ))
@@ -95,4 +85,4 @@ class AdminMatches extends Component {
   }
 }
 
-export default AdminMatches
+export default TheStore

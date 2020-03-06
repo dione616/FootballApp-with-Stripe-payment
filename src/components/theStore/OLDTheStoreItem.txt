@@ -1,0 +1,54 @@
+class TheStoreItem extends Component {
+  state = {
+    name: "",
+    price: ""
+  }
+  updateField(item, teamOptions, teams, type, matchId) {
+    const newFormdata = {
+      ...this.state
+    }
+    console.log(this.state)
+
+    for (let key in newFormdata) {
+      if (item) {
+        newFormdata[key] = item[key] //match come from server
+      }
+    }
+
+    this.setState(newFormdata)
+  }
+
+  componentDidMount() {
+    const itemId = this.props.match.params.id
+
+    const getItem = item => {
+      this.updateField(item /* , teamOptions, teams, type , matchId*/)
+    }
+
+    firebaseDB
+      .ref(`items/${itemId}`)
+      .once("value")
+      .then(snapshot => {
+        const itemTest = snapshot.val()
+        getItem(itemTest)
+      })
+    //EDIT EXISTING MATCH
+  }
+
+  render() {
+    console.log(this.state)
+
+    return (
+      <AdminLayout>
+        <div>
+          <h2>Text</h2>
+          <h2>Text</h2>
+          <h2>Text</h2>
+          <h2>Text</h2>
+        </div>
+      </AdminLayout>
+    )
+  }
+}
+
+export default TheStoreItem

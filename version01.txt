@@ -1,0 +1,112 @@
+import React, { Component } from "react"
+import CircularProgress from "@material-ui/core/CircularProgress"
+import Stripes from "../../Resources/images/stripes.png"
+import { firebaseStore } from "../../firebase"
+import { firebaseLooper } from "../ui/misc"
+import StripeCheckout from "react-stripe-checkout"
+import axios from "axios"
+import { toast } from "react-toastify"
+import Payment from "./Payment"
+
+toast.configure()
+
+/* rewrite to functional component to POST */
+
+class TheStore extends Component {
+  state = {
+    isLoading: true,
+    items: [
+      { id: "cap001", name: "M.City Cap", price: 99555 },
+      { id: "tshirt001", name: "TShirt", price: 98251 }
+    ]
+  }
+
+  componentDidMount() {
+    firebaseStore.once("value").then(snapshot => {
+      const store = firebaseLooper(snapshot)
+      this.setState({ isLoading: false, items: store })
+      console.log(this.state.items)
+    })
+  }
+
+  render() {
+    return (
+      <div className="the_matches_container">
+        {this.state.isLoading ? (
+          <CircularProgress thickness={8} style={{ color: "#98c5e9" }} />
+        ) : (
+          ""
+        )}
+
+        <Payment data={this.state.items} />
+      </div>
+    )
+  }
+}
+
+export default TheStore
+
+
+
+
+
+
+
+
+
+
+import React from "react"
+import Stripes from "../../Resources/images/stripes.png"
+import StripeCheckout from "react-stripe-checkout"
+import axios from "axios"
+import { toast } from "react-toastify"
+
+const Payment = props => {
+  let [product] = React.useState({
+    name: props.data[0].name,
+    price: props.data[0].price,
+    description: props.data[0].name
+  })
+
+  async function handleToken(token) {
+    console.log(token, product)
+
+    const response = await axios.post(
+      "https://iekw7.sse.codesandbox.io/checkout",
+      { token, product }
+    )
+    const { status } = response.data
+    if (status === "success") {
+      toast("Success! Check email for details", { type: "success" })
+    } else {
+      toast("Failure! Something went wrong", { type: "error" })
+    }
+  }
+  const a = props.data.map((item, i) => {
+    return (
+      <div
+        className="content_wrapper"
+        style={{ background: `url(${Stripes}) repeat` }}
+      >
+        <div className="item_wrapper" key={i}>
+          <h3>{item.name}</h3>
+          <div className="item_price">{item.price}</div>
+
+          <StripeCheckout
+            stripeKey="pk_test_UclFoF5f0JeleayORl9NIVwE00GfM2oo7L"
+            token={handleToken}
+            billingAddress
+            shippingAddress
+            amount={props.data[0].price * 100}
+            name={props.data[0].name}
+          />
+        </div>
+      </div>
+    )
+  })
+
+  return <div>{a}</div>
+}
+
+export default Payment
+
