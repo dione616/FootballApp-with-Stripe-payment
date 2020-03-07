@@ -14,6 +14,8 @@ import TheTeam from "./components/theTeam"
 import TheMatches from "./components/theMatches"
 import TheStore from "./components/theStore/index"
 import TheStoreItem from "./components/theStore/TheStoreItem"
+import AdminStore from "./components/admin/store"
+import AddEditItem from "./components/admin/store/AddEditItem"
 
 const Routes = props => {
   return (
@@ -105,6 +107,20 @@ const Routes = props => {
           path="/store/:id"
           exact
           component={TheStoreItem}
+        />
+        <PrivateRoutes
+          {...props}
+          restricted={true}
+          path="/admin_store"
+          exact
+          component={AdminStore}
+        />
+        <PrivateRoutes
+          {...props}
+          restricted={true}
+          path="/admin_store/edit_item/:id"
+          exact
+          component={AddEditItem}
         />
       </Switch>
     </Layout>

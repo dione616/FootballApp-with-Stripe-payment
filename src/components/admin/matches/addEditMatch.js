@@ -162,7 +162,7 @@ class AddEditMatch extends Component {
     }
   }
 
-  /* updateForm(element) {
+  updateForm(element) {
     const newFormdata = { ...this.state.formdata }
     const newElement = { ...newFormdata[element.id] }
 
@@ -178,23 +178,23 @@ class AddEditMatch extends Component {
       formError: false,
       formdata: newFormdata
     })
-  } */
+  }
 
   updateFields(match, teamOptions, teams, type, matchId) {
     const newFormdata = {
       ...this.state.formdata
     }
-    console.log(this.state.formdata)
 
     for (let key in newFormdata) {
       if (match) {
         newFormdata[key].value = match[key] //match come from server
-        /* newFormdata[key].valid = true */
+        newFormdata[key].valid = true
       }
-      /* if (key === "local" || key === "away") {
+      if (key === "local" || key === "away") {
         newFormdata[key].config.options = teamOptions
-      } */
+      }
     }
+    console.log(newFormdata)
 
     this.setState({ matchId, formType: type, formdata: newFormdata, teams })
   }
@@ -202,9 +202,7 @@ class AddEditMatch extends Component {
   componentDidMount() {
     const matchId = this.props.match.params.id
 
-    const getTeams = match => {
-      console.log(match)
-
+    const getTeams = (match, type) => {
       firebaseTeams.once("value").then(snapshot => {
         const teams = firebaseLooper(snapshot)
         const teamOptions = []
@@ -215,7 +213,9 @@ class AddEditMatch extends Component {
             value: childSnapshot.val().shortName
           })
         })
-        this.updateFields(match /* , teamOptions, teams, type , matchId*/)
+        console.log(match)
+
+        this.updateFields(match, teamOptions, teams, type, matchId)
       })
     }
 

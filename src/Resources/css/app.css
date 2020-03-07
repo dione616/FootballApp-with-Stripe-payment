@@ -565,7 +565,7 @@ footer .footer_discl {
   margin: 20px 0px;
 }
 
-.admin_container .matches_tag_blue {
+.admin_container .span_tag_blue {
   font-weight: 700;
   color: #3f8ab5;
 }
@@ -575,16 +575,17 @@ footer .footer_discl {
   color: #f44336;
 }
 
-.admin_container .matches_tag_green {
+.admin_container .span_tag_green {
   font-weight: 700;
   color: #4caf50;
 }
 
 .admin_container h2 {
   margin: 0px 0px 50px 0px;
-  border-bottom: 1px solid #dbdbdb;
+  /* border-bottom: 1px solid #dbdbdb; */
   color: #414141;
   font-size: 40px;
+  text-align: center;
 }
 
 .editmatch_dialog_wrapper,
@@ -690,9 +691,8 @@ footer .footer_discl {
 }
 
 table,
-th,
-td {
-  border: 1px solid black;
+th {
+  border-top: 2px solid #9aa0a5;
 }
 
 .item_wrapper {

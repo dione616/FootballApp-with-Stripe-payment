@@ -53,13 +53,9 @@ class AdminMatches extends Component {
                         <TableCell>{match.date}</TableCell>
                         <TableCell>
                           <Link to={`/admin_matches/edit_match/${match.id}`}>
-                            <span className="matches_tag_blue">
-                              {match.away}
-                            </span>
+                            <span className="span_tag_blue">{match.away}</span>
                             <strong> VS </strong>
-                            <span className="matches_tag_blue">
-                              {match.local}
-                            </span>
+                            <span className="span_tag_blue">{match.local}</span>
                           </Link>
                         </TableCell>
                         <TableCell>
@@ -71,7 +67,7 @@ class AdminMatches extends Component {
                           {match.final === "Yes" ? (
                             <span className="matches_tag_red">Final</span>
                           ) : (
-                            <span className="matches_tag_green">
+                            <span className="span_tag_green">
                               Not played yet
                             </span>
                           )}

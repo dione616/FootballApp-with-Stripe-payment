@@ -31,19 +31,6 @@ const Payment = props => {
       toast("Failure! Something went wrong", { type: "error" })
     }
   }
-  /* const a = props.data.map((item, i) => {
-    return (
-      <div
-        className="content_wrapper"
-        style={{ background: `url(${Stripes}) repeat` }}
-      >
-        <div className="item_wrapper" key={i}>
-          <h3>{item.name}</h3>
-          <div className="item_price">{item.price}</div>
-        </div>
-      </div>
-    )
-  }) */
 
   return (
     <div>
