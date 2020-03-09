@@ -21,7 +21,8 @@ const AdminNav = () => {
       title: "Add Players",
       linkTo: "/admin_players/add_players"
     },
-    { title: "Store", linkTo: "/admin_store" }
+    { title: "Store", linkTo: "/admin_store" },
+    { title: "Add store", linkTo: "/admin_store/edit_item" }
   ]
 
   const style = {

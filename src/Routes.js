@@ -122,6 +122,13 @@ const Routes = props => {
           exact
           component={AddEditItem}
         />
+        <PrivateRoutes
+          {...props}
+          restricted={true}
+          path="/admin_store/edit_item"
+          exact
+          component={AddEditItem}
+        />
       </Switch>
     </Layout>
   )
