@@ -12,6 +12,7 @@ class TheTeam extends Component {
   componentDidMount() {
     firebasePlayers.once("value").then(snapshot => {
       const players = firebaseLooper(snapshot)
+      console.log(players)
 
       let promises = []
 
@@ -42,12 +43,7 @@ class TheTeam extends Component {
           return player.position === category ? (
             <Fade left delay={i * 50} key={i}>
               <div className="item">
-                <PlayerCard
-                  number={player.number}
-                  name={player.name}
-                  lastname={player.lastname}
-                  bck={player.url}
-                />
+                <PlayerCard number={player.number} name={player.name} lastname={player.lastname} bck={player.url} />
               </div>
             </Fade>
           ) : null
@@ -67,21 +63,13 @@ class TheTeam extends Component {
           <div>
             <div className="team_category_wrapper">
               <div className="title">Keepers</div>
-              <div className="team_cards">
-                {this.showPlayersByCategory("Keeper")}
-              </div>
+              <div className="team_cards">{this.showPlayersByCategory("Keeper")}</div>
               <div className="title">Defence</div>
-              <div className="team_cards">
-                {this.showPlayersByCategory("Defence")}
-              </div>
+              <div className="team_cards">{this.showPlayersByCategory("Defence")}</div>
               <div className="title">Midfield</div>
-              <div className="team_cards">
-                {this.showPlayersByCategory("Midfield")}
-              </div>
+              <div className="team_cards">{this.showPlayersByCategory("Midfield")}</div>
               <div className="title">Strikers</div>
-              <div className="team_cards">
-                {this.showPlayersByCategory("Striker")}
-              </div>
+              <div className="team_cards">{this.showPlayersByCategory("Striker")}</div>
             </div>
           </div>
         ) : null}

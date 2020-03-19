@@ -15,6 +15,7 @@ import axios from "axios"
 import { toast } from "react-toastify"
 import Payment from "./Payment"
 import { Link } from "react-router-dom"
+import NOTshirt from "../../Resources/images/NOTshirt.jpg"
 
 toast.configure()
 
@@ -37,50 +38,28 @@ class TheStore extends Component {
 
   render() {
     return (
-      <AdminLayout>
-        <div className="">
-          <Paper>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Date</TableCell>
-                  <TableCell>Match</TableCell>
-                  <TableCell>Result</TableCell>
-                  <TableCell>Final</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {console.log(this.state.items)}
-                {this.state.items
-                  ? this.state.items.map((item, i) => (
-                      <TableRow key={i}>
-                        <TableCell>{item.id}</TableCell>
-                        <TableCell>
-                          <Link to={`/store/${item.id}`}>
-                            <span className="matches_tag_blue">
-                              {item.name}
-                            </span>
-                            <strong> VS </strong>
-                            <span className="matches_tag_blue">
-                              {item.price}
-                            </span>
-                          </Link>
-                        </TableCell>
-                      </TableRow>
-                    ))
-                  : null}
-              </TableBody>
-            </Table>
-          </Paper>
-          <div className="admin_progress">
-            {this.state.isloading ? (
-              <CircularProgress thickness={7} style={{ color: "#98c5e9" }} />
-            ) : (
-              ""
-            )}
-          </div>
+      <div className="store-items-wrapper">
+        {console.log(this.state.items)}
+        {this.state.items
+          ? this.state.items.map((item, i) => (
+              <div className="player_card_wrapper" key={i}>
+                <Link to={`/store/${item.id}`}>
+                  <div className="player_card_thmb" style={{ background: `#f2f9ff url(${NOTshirt})` }} />
+                  <div className="player_card_info">
+                    <div className="player_card_number">{`$${item.price}`}</div>
+                    <div className="player_card_name">
+                      <span>{item.name}</span>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))
+          : null}
+
+        <div className="admin_progress">
+          {this.state.isloading ? <CircularProgress thickness={7} style={{ color: "#98c5e9" }} /> : ""}
         </div>
-      </AdminLayout>
+      </div>
     )
   }
 }

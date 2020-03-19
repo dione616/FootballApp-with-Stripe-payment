@@ -141,7 +141,9 @@ button {
 /*=============================
             HEADER FOOTER
 ===============================*/
-
+header {
+  max-height: 20vh;
+}
 footer {
   text-align: center;
   font-size: 16px;
@@ -240,6 +242,15 @@ footer .footer_discl {
   padding-right: 30px;
 }
 
+.store-items-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20vh 15vw;
+  justify-content: center;
+}
+.store-items-wrapper > div {
+  margin: 1rem;
+}
 /*=============================
             MATCHES BLOCK
 ===============================*/
@@ -426,7 +437,7 @@ footer .footer_discl {
 }
 .player_card_wrapper .player_card_number {
   color: #d6ecfe;
-  font-size: 185px;
+  font-size: 135px;
   text-align: right;
   line-height: 160px;
 }

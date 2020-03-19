@@ -60,9 +60,10 @@ class TheStoreItem extends Component {
     console.log(this.state)
 
     return (
-      <AdminLayout>
+      <div>
+        <div className="item-wrapper"></div>
         <Payment data={this.state} />
-      </AdminLayout>
+      </div>
     )
   }
 }
