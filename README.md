@@ -27,15 +27,14 @@ https://m-city-caf04.firebaseapp.com/
 
 ***Example***
 
-[![Main Page](http://prntscr.com/tjj9yo)]()
-<img src="http://prntscr.com/tjj9yo" title="Project" alt="Logo">
+[![Main Page](https://i.imgur.com/Sd4Hn0R.png)]
 
 - 
 **Admin Dashboard**
 
-![](http://prntscr.com/tjjagy)
+![](https://i.imgur.com/rvY9pYC.png)
 
 **Payment**
 
-![](http://prntscr.com/tjjanv)
+![](https://i.imgur.com/5vnLiKs.png)
 
