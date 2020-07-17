@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b5b8128f-aa2f-4a2d-bfb1-e662de6e8aec" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Resources/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header_footer/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header_footer/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/featured/Text.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/featured/Text.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/featured/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/featured/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/meetPlayers/MeetPlayers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/meetPlayers/MeetPlayers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/meetPlayers/cards.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/meetPlayers/cards.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/promotion/Animation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/promotion/Animation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/theStore/Payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/theStore/Payment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/theStore/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/theStore/index.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/football-project.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/.gitignore" />
+        <option value="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+        <option value="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1aULTIdQy0t6KIRW0NzteSnosfb" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../diplom-soc-net/soc-net-06-05" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.CSS" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b5b8128f-aa2f-4a2d-bfb1-e662de6e8aec" name="Default Changelist" comment="" />
+      <created>1586785231335</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586785231335</updated>
+      <workItem from="1586785269177" duration="265000" />
+      <workItem from="1586785616073" duration="6081000" />
+      <workItem from="1586849902527" duration="6232000" />
+      <workItem from="1586868561946" duration="6470000" />
+      <workItem from="1586884277961" duration="8292000" />
+      <workItem from="1593175904987" duration="64000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
